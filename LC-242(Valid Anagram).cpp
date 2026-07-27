@@ -1,22 +1,19 @@
 class Solution {
 public:
-    void sortColors(vector<int>& nums) {
-        int start = 0;
-        int end = nums.size() - 1;
-        int i = 0;
-        while(i<=end){
-                if(nums[i] == 0){
-                    swap(nums[i] , nums[start]);
-                    i++;
-                    start++;
-                }
-                else if(nums[i] == 2){
-                    swap(nums[i] , nums[end]);
-                    end--;
-                }
-                else{
-                    i++;
-                }
+    bool isAnagram(string s, string t) {
+        int frequencytable[256] = {0};
+        for(int i = 0; i<s.size(); i++){
+           frequencytable[s[i]]++;
+        }
+        for(int i = 0; i<t.size(); i++){
+            frequencytable[t[i]]--;
+        }
+        for(int i = 0; i<256; i++){
+            if(frequencytable[i] != 0){
+                return false;
             }
-       }
+        }
+        return true;
+        
+    }
 };
